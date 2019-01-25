@@ -6,10 +6,10 @@ skip = False
 #START SPOT
 x = 0
 y = 0
-size = 10
+size = 20
 
-alphabet = {'a':1,'b':2,'c':3,'d':4}
-alphabetNum = {1:'a',2:'b',3:'c',4:'d'}
+alphabet = {'a':1,'b':2,'c':3,'d':4,'e':5}
+alphabetNum = {1:'a',2:'b',3:'c',4:'d',5:'e'}
 placeAt = {'x':x,'y':y,'size':size}
 lettLoop = 1
 for lettnum in alphabet:
@@ -18,7 +18,9 @@ for lettnum in alphabet:
     letter['b'] = [("l"),(x,y),(x,y - size*4),(x + size*2,y - size*4),(x + size*2,y - size*2),(x,y - size*2),]
     letter['c'] = [("l"),(x + size*2,y - size*2),(x,y - size*2),(x,y - size*4),(x + size*2,y - size*4)]
     letter['d'] = [("l"),(x + size*2,y),(x + size*2,y - size*4),(x,y - size*4),(x,y - size*2),(x + size*2,y - size*2)]
+    letter['e'] = [("l"),(x + size*2,y - size*4),(x,y - size*4),(x,y - size*2),(x + size*2,y - size*2),(x + size*2,y - size*3),(x,y - size*3)]
     
+
     for num in letter[lettnum]:
         if skip == True:
             pen.up(); pen.goto(num); pen.down()
@@ -28,6 +30,5 @@ for lettnum in alphabet:
         else:
             pen.goto(num)
         print(num)
-    x += 30
+    x += size *3
     lettLoop += 1
-    
