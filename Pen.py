@@ -2,28 +2,31 @@ import turtle
 pen = turtle.Turtle()
 pen.hideturtle()
 
-
 #START SPOT
-startx = 0
+startx = -200
 starty = 0
-size = 10
+size = 5
 x = startx
 y = starty
 
+#INPUT
+listOutputPrint = False #Change to True if you want location output
 inStr = input('letters: abcdefghijklmnopqrstuvwxyz, ENTER = "`", SPACE = " "\nstring : ')
 myStr = []
 for c in range(0,len(inStr),1):
     myStr.append(inStr[c])
-print (inStr , myStr)
+if listOutputPrint == True:
+    print (inStr , myStr)
 
-
+#INIT
 skip = False
 placeAt = {'x':x,'y':y,'size':size}
 lettLoop = 1
+#LOOP
 for char in myStr:
     
     letter = {' ':[]}
-    letter['`'] = [("ENTER")]
+    #A-Z
     letter['a'] = [("l"),(x,y - size*1),(x + size*2,y - size*1),(x + size*2,y - size*4),(x,y - size*4),(x,y - size*2),(x + size*2,y - size*2)]
     letter['b'] = [("l"),(x,y),(x,y - size*4),(x + size*2,y - size*4),(x + size*2,y - size*2),(x,y - size*2)]
     letter['c'] = [("l"),(x + size*2,y - size*2),(x,y - size*2),(x,y - size*4),(x + size*2,y - size*4)]
@@ -50,8 +53,10 @@ for char in myStr:
     letter['x'] = [("l"),(x + size*2,y - size*4),(x,y - size*2),("l"),(x,y - size*4),(x + size*2,y - size*2)]
     letter['y'] = [("l"),(x,y),(x,y - size*2),(x + size*2,y - size*2),(x + size*2,y),(x + size*2,y - size*4),(x + size,y - size*4)]
     letter['z'] = [("l"),(x,y - size*2),(x + size*2,y - size*2),(x,y - size*4),(x + size*2,y - size*4)]
-
-
+    #OTHER CHARS
+    letter['`'] = [("ENTER")]
+    
+    #RENDER
     for num in letter[char]:
         if skip == True:
             pen.up(); pen.goto(num); pen.down()
@@ -71,10 +76,11 @@ for char in myStr:
             skip = False
         else:
             pen.goto(num)
-            
-        print(num)
+        if listOutputPrint == True:
+            print(num)
     x += size *3
     lettLoop += 1
-print(myStr)
+if listOutputPrint == True:
+    print(myStr)
 #letter['e'] = [("l"),(x + size*2,y - size*4),
 #(x + size*2,y - size*4),
