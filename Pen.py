@@ -82,5 +82,6 @@ for char in myStr:
     lettLoop += 1
 if listOutputPrint == True:
     print(myStr)
+input('press ENTER to exit')
 #letter['e'] = [("l"),(x + size*2,y - size*4),
 #(x + size*2,y - size*4),
